@@ -41,6 +41,9 @@ class Array:
     def get_len(self):
         return len(self.values)
 
+    def __iter__(self):
+        return iter(self.values)
+
 
 def bubble_sort(nums):  # n^2
     # We set swapped to True so the loop looks runs at least once
