@@ -215,3 +215,17 @@ def quick_sort(nums):  # n^2
             _quick_sort(items, split_index + 1, high)
 
     _quick_sort(nums, 0, nums.get_len() - 1)
+
+def shell_sort(nums, gaps=None): # Unknown Complexity Theta; whereas Worst case O(n^2)
+    # Use Ciura's gap sequence by dafault
+    if gaps is None:
+        gaps = Array([701, 301, 132, 57, 23, 10, 4, 1])
+    # Sorting interleaving lists of numbers
+    for gap in gaps:
+        # Sort the elements differing in index by `gap` distance
+        for i in range(gap, nums.get_len()):
+            j = i
+            while j >= gap and nums.values[j-gap] > nums.values[j]:
+                # Swap elements with inversion
+                nums.swap(j, j-gap)
+                j -= gap
